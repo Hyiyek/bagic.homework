@@ -44,23 +44,23 @@ const objArray = [
   function myMap(arr, callback) {
     let Baul = [];
     for(let i = 0; i< arr.length; i++){  // return같은경우는 반환하는거기때문에 add.push 코드이후로 return 하면 요소를바로반환한다
-        if(callback(arr[i])){
-            add.push(arr[i]);  
+        const result = callback(arr[i]);
+        Baul.push(result);
         }     
-    } 
+    
     return Baul;  
+  }   
      
-}   
        
 // callback = abc.price >= 200 ;
 
 
 
   const result = objArray4.map(function(fruit){
-    return fruit.price >=100;
+    return fruit.price;
   })
 
   const result2 = myMap(objArray,function(fruit){
-    return fruit.price >=100;
+    return fruit.prcie;
   });
   
