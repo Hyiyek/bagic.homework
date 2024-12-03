@@ -1,9 +1,9 @@
 class Character {
   constructor(name, level, hp, attack) {
     this.name = name; // 캐릭터 이름         //1. RPG 게임에서 사용할 **캐릭터 클래스를 설계**하세요.
-    this.level = level; // 캐릭터 레벨
+    this.level = 1; // 캐릭터 레벨
     this.hp = hp; // 체력
-    this.attacker = attacker; // 공격력
+    this.attacker = 10; // 공격력
   }
   attack() {
     console.log(`${this.name}가 공격을시도합니다!`); // 2. attack 메서드를 구현하여, 호출 시 “<캐릭터 이름>가 공격을 시도합니다!“를 출력할 것.
@@ -59,3 +59,12 @@ findTreasure()
   .catch((error) => {
     console.log(error);
   });
+
+const newDay = async () => {
+  try {
+    const message = await findTreasure();
+    console.log(message);
+  } catch (error) {
+    console.log(error);
+  }
+};
