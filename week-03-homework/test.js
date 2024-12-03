@@ -41,8 +41,8 @@ archer.attack();
 function findTreasure() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      const success = Math.random() < 0.1; // 10% 확률로 성공
-      if (success) {
+      const randomNumber = Math.random() < 0.1; // 10% 확률로 성공
+      if (randomNumber) {
         resolve("축하합니다! 황금 보물을 발견!");
       } else {
         reject("보물을 찾는 데 실패");
