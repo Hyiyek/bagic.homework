@@ -61,8 +61,3 @@ app.delete("/players/:id", (req, res) => {
   players.splice(playerIndex, 1);
   res.status(204).send();
 });
-
-// 서버 시작
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
