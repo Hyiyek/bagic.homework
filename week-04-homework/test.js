@@ -30,7 +30,7 @@ app.post("/players", (req, res) => {
 });
 
 // 플레이어 수정 (PUT /players/:id)
-app.put("/players/:id", (req, res) => {
+app.get("/players/:id", (req, res) => {
   const playerId = parseInt(req.params.id);
   const playerIndex = players.findIndex((player) => player.id === playerId);
 
