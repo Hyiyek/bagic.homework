@@ -34,8 +34,8 @@ app.put("/players/:id", (req, res) => {
   const playerId = parseInt(req.params.id);
   const playerIndex = players.findIndex((player) => player.id === playerId);
 
-  if (playerIndex === -1) {
-    return res.status(404).json({ message: "Player not found" });
+  if (!playerIndex) {
+    return res.status(404).json({ message: "플레이어를 찾을수없습니다" });
   }
 
   players[playerIndex] = {
@@ -54,8 +54,8 @@ app.delete("/players/:id", (req, res) => {
   const playerId = parseInt(req.params.id);
   const playerIndex = players.findIndex((player) => player.id === playerId);
 
-  if (playerIndex === -1) {
-    return res.status(404).json({ message: "Player not found" });
+  if (!playerIndex) {
+    return res.status(404).json({ message: "플레이어를 찾을수없습니다" });
   }
 
   players.splice(playerIndex, 1);
