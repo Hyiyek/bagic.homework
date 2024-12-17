@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 
 const getPlayers = async (req, res) => {
   const players = await prisma.player.findMany();
-  res.json(players);
+  return res.status(200).json(players);
 };
 
 const createPlayer = async (req, res) => {
@@ -15,14 +15,22 @@ const createPlayer = async (req, res) => {
     data: { name, speed, grade },
   });
 
-  res.json(player);
+  return res.status(201).json({ message: "생성이 완료되었습니다" });
 };
 const updatePlayer = async (req, res) => {
-  const { name } = req.params;
+  const { playerId } = req.params;
   const { speed, grade } = req.body;
 
+  const foundPlayer = await prisma.player.findUnique({
+    where: {
+      id: playerId,
+    },
+  });
+  if (!foundPlayer)
+    return res.status(404).json({ message: "존재하지않는 플레이어입니다" });
+
   const player = await prisma.player.update({
-    where: { name },
+    where: { playerId },
     data: {
       speed,
       grade,
@@ -42,4 +50,4 @@ const deletePlayer = async (req, res) => {
   res.json(player);
 };
 
-export { getPlayers, createPlayer, deletePlayer, updatePlayer };
+export { getPlayers, createPlayer, deletePlayer, updatePlayer, prisma };
